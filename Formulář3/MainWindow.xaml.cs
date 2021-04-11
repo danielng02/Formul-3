@@ -78,7 +78,6 @@ namespace Formulář3
 			else
 			{
 				SurnameErrorVisible = Visibility.Visible;
-				SurnameError = "Cokoliv";
 				return false;
 			}
 		}
@@ -93,7 +92,7 @@ namespace Formulář3
 
 			set
 			{
-				_NameErrorVisible = value;
+				_SurnameErrorVisible = value;
 				PropertyChanged(this, new PropertyChangedEventArgs("SurnameErrorVisible"));
 			}
 		}
