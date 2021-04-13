@@ -93,7 +93,8 @@ namespace Formulář3
 			set
 			{
 				_SurnameErrorVisible = value;
-				PropertyChanged(this, new PropertyChangedEventArgs("SurnameErrorVisible"));
+				if (PropertyChanged != null)
+					PropertyChanged(this, new PropertyChangedEventArgs("SurnameErrorVisible"));
 			}
 		}
 
@@ -102,18 +103,11 @@ namespace Formulář3
 		{
 			get
 			{
-				return _SurnameError;
-			}
-
-			set
-			{
-				if (Surname.Text.Length < 2)
+				if (Surname.Text.Length > 0 && Surname.Text.Length < 2)
 					_SurnameError = "Jméno nemůže být kratší než 2 znaky.";
 				else if (Surname.Text.Length > 20)
 					_SurnameError = "Jméno nemůže být delší než 20 znaků.";
-				else
-					_SurnameError = "";
-				PropertyChanged(this, new PropertyChangedEventArgs("SurnameError"));
+				return Surname.Text.Length.ToString();
 			}
 		}
 
